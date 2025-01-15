@@ -1,59 +1,59 @@
-const getComputerChoice = () => {
-    const randomNumber = Math.floor(Math.random() * 3);
-    switch (randomNumber) {
-        case 0:
-            return 'rock';
-        case 1:
-            return 'paper';
-        case 2:
-            return 'scissors';
-    }
-};
+let userScore  = 0;
+let compScore = 0;
 
-const determineWinner = (userChoice, computerChoice) => {
-    if (userChoice === computerChoice) {
-        return 'The game is a tie!';
+const choices = document.querySelectorAll(".choice");
+const message = document.querySelector("#message");
+
+const userScorePara = document.querySelector("#user-score");
+const compScorePara = document.querySelector("#comp-score");
+
+
+const drawGame = () => {
+    message.innerText = "It was a tie! Play again.";
+    message.style.color = "white";
+}
+
+const showWinnner = (userWin, userChoice, compChoice) => {
+    if(userWin) {
+        userScore++;
+        userScorePara.innerText = userScore;
+        message.innerText = `You Win! ${userChoice} beats ${compChoice}`;
+        message.style.color = "green";
+    } else {
+        compScore++;
+        compScorePara.innerText = compScore;
+        message.innerText = `You lose! ${compChoice} beats ${userChoice}`;
+        message.style.color = "red";
     }
-    if (userChoice === 'rock') {
-        if (computerChoice === 'paper') {
-            return 'Computer won.';
+}
+
+const genCompChoice = () => {
+    const options = ["Rock", "Paper", "Scissors"]
+    const randIx = Math.floor(Math.random() * 3);
+    return options[randIx];
+}
+
+const playGame = (userChoice) => {
+    const compChoice = genCompChoice();
+
+    if(userChoice === compChoice){
+        drawGame();
+    } else {
+        let userWin = true;
+        if(userChoice === "Rock") {
+            userWin = compChoice === "Paper" ? false : true;
+        } else if(userChoice === "Paper") {
+            userWin = compChoice === "Scissors" ? false: true;
         } else {
-            return 'You won!';
+            userWin = compChoice === "Rock" ? false: true;
         }
-    }
-
-    if (userChoice === 'paper') {
-        if (computerChoice === 'scissors') {
-            return 'Computer won.';
-        } else {
-            return 'You won!';
-        }
-    }
-
-    if (userChoice === 'scissors') {
-        if (computerChoice === 'rock') {
-            return 'Computer won.';
-        } else {
-            return 'You won!';
-        }
+        showWinnner(userWin, userChoice, compChoice);
     }
 };
 
-const playGame = (choice) => {
-    const userChoice = choice;
-    const computerChoice = getComputerChoice();
-    
-    document.getElementById('userChoice').textContent = `You chose: ${userChoice}`;
-    document.getElementById('computerChoice').textContent = `Computer chose: ${computerChoice}`;
-
-    const result = determineWinner(userChoice, computerChoice);
-    document.getElementById('winner').textContent = result;
-
-    document.querySelectorAll('button').forEach(button => button.classList.add('d-none'));
-    document.getElementById('result').classList.remove('d-none');
-};
-
-const resetGame = () => {
-    document.querySelectorAll('button').forEach(button => button.classList.remove('d-none'));
-    document.getElementById('result').classList.add('d-none');
-};
+choices.forEach((choice) => {
+    choice.addEventListener("click", () => {
+        const userChoice = choice.getAttribute("id");
+        playGame(userChoice);
+    });
+});

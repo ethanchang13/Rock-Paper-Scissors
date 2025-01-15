@@ -20,33 +20,50 @@
     </head>
 
     <body>
-        <header>
-            <!-- place navbar here -->
-        </header>
-        <main class="d-flex justify-content-center align-items-center vh-100 bg-dark text-white">
-            <div id="game">
-                <div class="row mb-3">
-                    <div class="col text-center">
-                        <button onclick="playGame('rock')" class="btn btn-success mt-4">
-                            <i class="fas fa-hand-rock"></i> Rock
-                        </button>
-                        <button onclick="playGame('paper')" class="btn btn-success mt-4">
-                            <i class="fas fa-hand-paper"></i> Paper
-                        </button>
-                        <button onclick="playGame('scissors')" class="btn btn-success mt-4">
-                            <i class="fas fa-hand-scissors"></i> Scissors
-                        </button>
+        <header class="container">
+            <div class="navbar"> 
+    
+                <h1>ROCK<br/>PAPER<br/>SCISSORS</h1>
+    
+                <div class="score-board">
+                    <div class="score">
+                        <p class="score-title">PLAYER</p>
+                        <p id="user-score">0</p>
+                    </div>
+                    <div class="score">
+                        <p>COMPUTER</p>
+                        <p id="comp-score">0</p>
                     </div>
                 </div>
-
-                <div id="result" class="text-center mt-4 d-none">
-                    <p id="userChoice"></p>
-                    <p id="computerChoice"></p>
-                    <h3 id="winner"></h3>
-                    <button onclick="resetGame()" class="btn btn-primary mt-4">Play Again</button>
-                </div>
+    
             </div>
-        </main>
+            
+    <main class="container">
+
+        <div class="message-container">
+            <p id="message">Play!</p>
+        </div>
+
+        <div class="choices">
+            <div class="choice" id="Rock">
+                <img class="choice-image" src="imgs/rock.png" alt="Rock">
+            </div>
+            <div class="choice" id="Paper">
+                <img class="choice-image" src="imgs/paper.png" alt="Paper">
+            </div>
+            <div class="choice" id="Scissors">
+                <img class="choice-image" src="imgs/scissors.png" alt="Scissors">
+            </div>
+        </div>
+
+    </main>
+
+    <div class="container tooltip ">
+        <div class="tooltip-group">
+            <h6>RULES</h6>
+            <img class="tooltipimg" src="imgs/rules.svg" alt="Game - Rules">
+        </div>
+    </div>
         <footer>
             <!-- place footer here -->
         </footer>
@@ -62,6 +79,6 @@
             integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
             crossorigin="anonymous"
         ></script>
-        <script src="app.js"></script>
+        <script src="script.js"></script>
     </body>
 </html>
