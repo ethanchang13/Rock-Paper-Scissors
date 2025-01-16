@@ -57,3 +57,10 @@ choices.forEach((choice) => {
         playGame(userChoice);
     });
 });
+
+let reset=()=>{
+    document.getElementById("userScore").innerHTML = 0;
+    userScorePara.innerText = userScore;
+    document.getElementById("compScore").innerHTML = 0;
+    compScorePara.innerText = compScore;
+}

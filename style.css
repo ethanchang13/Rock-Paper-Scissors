@@ -7,6 +7,7 @@
 body {
   background: radial-gradient(circle, #3e4149 0%, #232526 100%);
   color: #f0f0f0;
+  background: #457b9d;
 }
 .container {
   width: 90%;
@@ -52,7 +53,7 @@ h1 {
 .score {
   font-size: 1rem;
   font-weight: bold;
-  background-color: #e76f51;
+  background-color: #c78f81;
   color: #f0f0f0;
   text-align: center;
   border-radius: 0.5em;
@@ -89,9 +90,6 @@ h1 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
 }
 @media (min-width: 500px) {
-  body {
-    background: linear-gradient(to bottom, #457b9d, #1d3557);
-  }
   h1 {
     font-size: 2.5rem;
   }
@@ -115,42 +113,7 @@ h1 {
     width: 150px;
   }
 }
-.tooltip {
-  margin-top: 2em;
-  display: flex;
-  justify-content: center;
-}
-.tooltip-group {
-  position: relative;
-  cursor: pointer;
-  display: inline-block;
-  color: #1d3557;
-  background-color: #a8dadc;
-  border-radius: 0.5em;
-  padding: 0.5em 1em;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
-}
-.tooltip .tooltipimg {
-  visibility: hidden;
-  width: 300px;
-  padding: 1em;
-  position: absolute;
-  z-index: 1;
-  bottom: 130%;
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0;
-  transition: opacity 0.3s, transform 0.3s;
-  border-radius: 0.5em;
-  background-color: #264653;
-  color: #f0f0f0;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
-}
-.tooltip:hover .tooltipimg {
-  visibility: visible;
-  opacity: 1;
-  transform: translateX(-50%) translateY(-5px);
-}
+
 @media only screen and (min-width: 1200px) {
   #message {
     margin-top: 1.5em;
