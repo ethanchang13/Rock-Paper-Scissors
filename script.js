@@ -21,6 +21,7 @@ const showWinner = (userWin, userChoice, compChoice) => {
     userScorePara.innerText = userScore;
     message.innerText = `You Win! ${userChoice} beats ${compChoice}`;
     message.style.color = "green";
+    triggerConfetti();
   } else {
     compScore++;
     compScorePara.innerText = compScore;
@@ -100,3 +101,13 @@ choices.forEach((choice) => {
     playGame(userChoice);
   });
 });
+
+// Function to trigger confetti animation
+const triggerConfetti = () => {
+  // You can customize the confetti here
+  confetti({
+    particleCount: 100,
+    spread: 70,
+    origin: { y: 0.6 }  // Adjust the position of the confetti burst
+  });
+};
