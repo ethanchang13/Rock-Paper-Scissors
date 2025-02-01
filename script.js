@@ -19,28 +19,28 @@ const showWinner = (userWin, userChoice, compChoice) => {
   if (userWin) {
     userScore++;
     userScorePara.innerText = userScore;
-    message.innerText = `You Win! ${userChoice} beats ${compChoice}`;
-    message.style.color = "green";
-    triggerConfetti();
   } else {
     compScore++;
     compScorePara.innerText = compScore;
-    message.innerText = `You lose! ${compChoice} beats ${userChoice}`;
-    message.style.color = "red";
+  }
+
+  if (userScore === maxWins || compScore === maxWins) {
+    endGame();
+  } else {
+    message.innerText = userWin
+      ? `You Win! ${userChoice} beats ${compChoice}`
+      : `You lose! ${compChoice} beats ${userChoice}`;
+    message.style.color = userWin ? "green" : "red";
   }
 };
 
 const genCompChoice = () => {
   const options = ["Rock", "Paper", "Scissors"];
-  const randIx = Math.floor(Math.random() * 3);
-  return options[randIx];
+  return options[Math.floor(Math.random() * 3)];
 };
 
 const playGame = (userChoice) => {
-  if (userScore === maxWins || compScore === maxWins) {
-    endGame();
-    return;
-  }
+  if (userScore >= maxWins || compScore >= maxWins) return;
 
   const compChoice = genCompChoice();
 
@@ -49,28 +49,25 @@ const playGame = (userChoice) => {
   } else {
     let userWin = true;
     if (userChoice === "Rock") {
-      userWin = compChoice === "Paper" ? false : true;
+      userWin = compChoice !== "Paper";
     } else if (userChoice === "Paper") {
-      userWin = compChoice === "Scissors" ? false : true;
+      userWin = compChoice !== "Scissors";
     } else {
-      userWin = compChoice === "Rock" ? false : true;
+      userWin = compChoice !== "Rock";
     }
     showWinner(userWin, userChoice, compChoice);
   }
 
   roundsPlayed++;
   roundsPara.innerText = `Rounds Played: ${roundsPlayed}`;
-
-  if (userScore === maxWins || compScore === maxWins) {
-    endGame();
-  }
 };
 
 const endGame = () => {
   if (userScore === maxWins) {
     message.innerText = "Congratulations! You won the game!";
     message.style.color = "green";
-  } else if (compScore === maxWins) {
+    triggerConfetti();
+  } else {
     message.innerText = "Sorry, you lost the game!";
     message.style.color = "red";
   }
@@ -97,17 +94,17 @@ const reset = () => {
 
 choices.forEach((choice) => {
   choice.addEventListener("click", () => {
-    const userChoice = choice.getAttribute("id");
-    playGame(userChoice);
+    if (userScore < maxWins && compScore < maxWins) {
+      playGame(choice.getAttribute("id"));
+    }
   });
 });
 
 // Function to trigger confetti animation
 const triggerConfetti = () => {
-  // You can customize the confetti here
   confetti({
-    particleCount: 100,
-    spread: 70,
-    origin: { y: 0.6 }  // Adjust the position of the confetti burst
+    particleCount: 150,
+    spread: 90,
+    origin: { y: 0.6 },
   });
 };
