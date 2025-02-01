@@ -1,3 +1,16 @@
+document.getElementById("start-game").addEventListener("click", () => {
+  const username = document.getElementById("username").value.trim();
+
+  if (username) {
+    document.querySelector(".score-title").innerText = username.toUpperCase();
+    document.getElementById("username-section").style.display = "none";
+    document.getElementById("game-section").style.display = "block";
+    document.getElementById("game-title").style.display = "none";
+  } else {
+    alert("Please enter your name to start the game!");
+  }
+});
+
 let userScore = 0;
 let compScore = 0;
 let roundsPlayed = 0;
