@@ -84,8 +84,8 @@ const reset = () => {
   userScorePara.innerText = userScore;
   compScorePara.innerText = compScore;
   roundsPara.innerText = `Rounds Played: ${roundsPlayed}`;
-  message.innerText = "Game Reset. Start playing!";
-  message.style.color = "white";
+  message.innerText = "";
+  message.style.color = "";
 
   choices.forEach((choice) => {
     choice.disabled = false;
