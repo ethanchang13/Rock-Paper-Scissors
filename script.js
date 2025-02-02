@@ -1,3 +1,4 @@
+// Start game when button is clicked
 document.getElementById("start-game").addEventListener("click", () => {
   const username = document.getElementById("username").value.trim();
 
@@ -11,6 +12,7 @@ document.getElementById("start-game").addEventListener("click", () => {
   }
 });
 
+// Initialize game variables
 let userScore = 0;
 let compScore = 0;
 let roundsPlayed = 0;
@@ -23,11 +25,13 @@ const userScorePara = document.querySelector("#user-score");
 const compScorePara = document.querySelector("#comp-score");
 const roundsPara = document.querySelector("#rounds-played");
 
+// Handle a tie
 const drawGame = () => {
   message.innerText = "It was a tie! Play again.";
   message.style.color = "white";
 };
 
+// Determine and display the round winner
 const showWinner = (userWin, userChoice, compChoice) => {
   if (userWin) {
     userScore++;
@@ -47,11 +51,13 @@ const showWinner = (userWin, userChoice, compChoice) => {
   }
 };
 
+// Generate a random computer choice
 const genCompChoice = () => {
   const options = ["Rock", "Paper", "Scissors"];
   return options[Math.floor(Math.random() * 3)];
 };
 
+// Play a round
 const playGame = (userChoice) => {
   if (userScore >= maxWins || compScore >= maxWins) return;
 
@@ -75,6 +81,7 @@ const playGame = (userChoice) => {
   roundsPara.innerText = `Rounds Played: ${roundsPlayed}`;
 };
 
+// End the game when max wins are reached
 const endGame = () => {
   if (userScore === maxWins) {
     message.innerText = "Congratulations! You won the game!";
@@ -90,6 +97,7 @@ const endGame = () => {
   });
 };
 
+// Reset game state
 const reset = () => {
   userScore = 0;
   compScore = 0;
@@ -105,6 +113,7 @@ const reset = () => {
   });
 };
 
+// Add event listeners to choices
 choices.forEach((choice) => {
   choice.addEventListener("click", () => {
     if (userScore < maxWins && compScore < maxWins) {
@@ -113,7 +122,7 @@ choices.forEach((choice) => {
   });
 });
 
-// Function to trigger confetti animation
+// Trigger confetti animation on win
 const triggerConfetti = () => {
   confetti({
     particleCount: 150,

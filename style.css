@@ -11,6 +11,7 @@ body {
   background: #457b9d;
 }
 
+/* Main container */
 .container {
   width: 90%;
   max-width: 800px;
@@ -21,6 +22,7 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
 }
 
+/* Title */
 h1 {
   font-size: 2rem;
   font-weight: 700;
@@ -31,6 +33,7 @@ h1 {
   line-height: 1.2;
 }
 
+/* Username input section */
 #username-section {
   display: flex;
   flex-direction: column;
@@ -52,6 +55,12 @@ h1 {
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+#labelh1 {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+/* Username input field */
 #username-section input {
   width: 100%;
   padding: 10px;
@@ -68,6 +77,7 @@ h1 {
   color: rgba(255, 255, 255, 0.7);
 }
 
+/* Username submit button */
 #username-section button {
   margin-top: 20px;
   background: #99989d;
@@ -85,10 +95,7 @@ h1 {
   background: #65636a;
 }
 
-#labelh1 {
-  padding-bottom: 20px;
-}
-
+/* Game title */
 #game-title {
   font-size: 2rem;
   font-weight: bold;
@@ -98,6 +105,7 @@ h1 {
   margin-top: 150px;
 }
 
+/* Navbar */
 .navbar {
   display: flex;
   justify-content: center;
@@ -110,6 +118,7 @@ h1 {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.6);
 }
 
+/* Scoreboard */
 .score-board {
   display: flex;
   align-items: center;
@@ -129,7 +138,6 @@ h1 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   flex: 1 1 auto;
   min-width: 100px;
-  text-align: center;
 }
 
 #user-score,
@@ -138,6 +146,7 @@ h1 {
   color: #e63946;
 }
 
+/* Message display */
 #message {
   margin-top: 2em;
   color: #f4a261;
@@ -146,6 +155,7 @@ h1 {
   font-style: italic;
 }
 
+/* Choice buttons */
 .choices {
   display: flex;
   justify-content: center;
@@ -178,6 +188,7 @@ h1 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
 }
 
+/* Footer */
 footer {
   position: fixed;
   bottom: 0;
@@ -190,6 +201,7 @@ footer {
   font-size: 14px;
 }
 
+/* Dynamic styles */
 @media (max-width: 600px) {
   h1 {
     font-size: 1.8rem;
@@ -250,6 +262,7 @@ footer {
   }
 }
 
+/* Reset button */
 button {
   display: block;
   margin: 2em auto 0;
